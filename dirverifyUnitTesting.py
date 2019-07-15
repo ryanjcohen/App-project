@@ -2,10 +2,6 @@ from dirverify import dir_verify
 import unittest
 import os
 
-string = ("Files in the input list are not all in the directory." + 
-					"Missing files:")
-print string
-
 class TestDirVerify(unittest.TestCase):
 
 	# testing dir_verify with a file_list, directory, and regex that should 
