@@ -51,10 +51,3 @@ def dir_verify(file_list, directory, regex = ".*"):
 			if file not in regex_matches:
 				second_error = second_error + "\n" + file
 		raise ValueError(second_error)
-
-files = [ 
-			"test1.txt", "test1.pdf", "tester.txt"]
-directory = "dirverify tests"
-regex = "test"
-
-dir_verify(files, directory, regex)
