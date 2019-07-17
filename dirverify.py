@@ -16,19 +16,21 @@ def dir_verify(file_list, directory, regex = ".*"):
 	# extract list of files in the input directory
 	file_names = os.listdir(directory)
 	
-	# check that each file in file_list is in the input directory, adding its 
-	# name to first_error if it is not
+	# check whether files have been added to first_error_files, raising 
+	# an error with the names of the files if so
 	first_error = ("Files in the input list are not all in the directory. " + 
 					"Missing files:")
+	first_error_files = []
 	for file in file_list:
 		if file not in file_names:
-			first_error = first_error + "\n" + file
+			first_error_files.append(file)
 	
 	# check whether the original first_error string has been added to, raising 
 	# an error with the new first_error string if so
-	if first_error != ("Files in the input list are not all in the directory. " 
-					+ "Missing files:"):
-		raise ValueError(first_error)
+	if len(first_error_files) != 0:
+		first_error = first_error
+		first_error_names = "\n".join(first_error_files)
+		raise ValueError(first_error + "\n" + file_names)
 	
 	# populate an array with filenames in the directory matching input regex
 	regex_matches = []
@@ -40,14 +42,16 @@ def dir_verify(file_list, directory, regex = ".*"):
 	# input file_list
 	if sorted(file_list) != sorted(regex_matches):
 			# report an error with the filenames matching the regex that are 
-			# not in the input file_list
+			# not in the input file_list and the filenames in the fie_list
+			# that are not in regex_matches
 		second_error = ("Files matching the regex and files in the input fil "
 						+ " list are not the same. Files not in both lists:")
+		second_error_files = []
 		for file in regex_matches:
 			if file not in file_list:
-				second_error = second_error + "\n" + file 
-				print second_error
+				second_error_files.append(file)
 		for file in file_list:
 			if file not in regex_matches:
-				second_error = second_error + "\n" + file
-		raise ValueError(second_error)
+				second_error_files.append(file)
+		second_error_names = "\n".join(second_error_files)
+		raise ValueError(second_error + "\n" + second_error_names)
