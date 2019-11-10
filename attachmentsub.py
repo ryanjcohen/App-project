@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup, element
 
+# Function to convert confluence media links in in_file to URL for actual locations in the export
 def attachmentsub(in_file):
 	soup = BeautifulSoup(in_file, "html.parser")
 
@@ -12,6 +13,8 @@ def attachmentsub(in_file):
 
 			new_href = "attachments/" + container_id + "/" + resource_id + "." + data_mime_type
 
-			element.replace_with(soup.new_tag('a', href=new_href))
+			new_tag = soup.new_tag('a', href=new_href)
+			new_tag.string = default_alias
+			element.replace_with(new_tag)
 
 	return str(soup).decode('utf-8')
