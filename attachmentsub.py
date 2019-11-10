@@ -5,7 +5,7 @@ def attachmentsub(in_file):
 	soup = BeautifulSoup(in_file, "html.parser")
 
 	for element in soup.find_all('p'):
-		if(element['class']==[u'media-group']):
+		if(element.has_attr('class') and element['class']==[u'media-group']):
 			container_id = element.a["data-linked-resource-container-id"]
 			default_alias = element.a["data-linked-resource-default-alias"]
 			resource_id = element.a["data-linked-resource-id"]
