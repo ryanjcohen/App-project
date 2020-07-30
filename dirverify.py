@@ -39,10 +39,10 @@ def dir_verify(file_list, directory, regex = ".*"):
 			regex_matches.append(file)
 
 	# check if all files with the names matching the regex are found in the 
-	# input file_list
+	# input file_list and vice versa
 	if sorted(file_list) != sorted(regex_matches):
 			# report an error with the filenames matching the regex that are 
-			# not in the input file_list and the filenames in the fie_list
+			# not in the input file_list and the filenames in the file_list
 			# that are not in regex_matches
 		second_error = ("Files matching the regex and files in the input file "
 						+ "list are not the same. Files not in both lists:")
