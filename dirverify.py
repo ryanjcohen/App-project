@@ -45,7 +45,7 @@ def dir_verify(file_list, directory, regex = ".*"):
 			# not in the input file_list and the filenames in the fie_list
 			# that are not in regex_matches
 		second_error = ("Files matching the regex and files in the input file "
-						+ " list are not the same. Files not in both lists:")
+						+ "list are not the same. Files not in both lists:")
 		second_error_files = []
 		for file in regex_matches:
 			if file not in file_list:
