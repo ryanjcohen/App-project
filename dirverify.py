@@ -3,7 +3,7 @@ import re
 
 def dir_verify(file_list, directory, regex = ".*"):
 	""" Checks that all files in the input list file_list are in the input 
-	directory string. Then uses input regex string to find matching filenames 
+	directory. Then uses input regex string to find matching filenames 
 	in directory and checks that all matching filenames are in the input 
 	file_list.
 
@@ -44,7 +44,7 @@ def dir_verify(file_list, directory, regex = ".*"):
 			# report an error with the filenames matching the regex that are 
 			# not in the input file_list and the filenames in the fie_list
 			# that are not in regex_matches
-		second_error = ("Files matching the regex and files in the input fil "
+		second_error = ("Files matching the regex and files in the input file "
 						+ " list are not the same. Files not in both lists:")
 		second_error_files = []
 		for file in regex_matches:
