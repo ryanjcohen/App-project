@@ -13,9 +13,9 @@ class TestDirVerify(unittest.TestCase):
 	# testing dir_verify with a file_list and directory that should result in 
 	# no errors
 	def test_no_regex(self):
-		self.assertEqual(dir_verify(["festive.txt", ".DS_Store", "test1.txt",
+		self.assertEqual(dir_verify(["festive.txt", "test1.txt",
 			"goodbye.txt", "festive.pdf", "test1.pdf", "tester.txt", 
-			"hello2.txt", "hello.txt"], "dirverify_tests"), None)
+			"hello2.txt", "hello.txt", "d"], "dirverify_tests"), None)
 
 	# testing dir_verify with a file_list, directory, and regex that should 
 	# result in the first error being raised

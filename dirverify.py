@@ -16,8 +16,8 @@ def dir_verify(file_list, directory, regex = ".*"):
 	# extract list of files in the input directory
 	file_names = os.listdir(directory)
 	
-	# check whether files have been added to first_error_files, raising 
-	# an error with the names of the files if so
+	# check that each file in file_list is in the input directory, adding its 
+	# name to first_error if it is not
 	first_error = ("Files in the input list are not all in the directory. " + 
 					"Missing files:")
 	first_error_files = []
@@ -25,12 +25,12 @@ def dir_verify(file_list, directory, regex = ".*"):
 		if file not in file_names:
 			first_error_files.append(file)
 	
-	# check whether the original first_error string has been added to, raising 
-	# an error with the new first_error string if so
+	# check whether files have been added to first_error_files, raising 
+	# an error with the names of the files if so
 	if len(first_error_files) != 0:
 		first_error = first_error
 		first_error_names = "\n".join(first_error_files)
-		raise ValueError(first_error + "\n" + file_names)
+		raise ValueError(first_error + "\n" + first_error_names)
 	
 	# populate an array with filenames in the directory matching input regex
 	regex_matches = []
